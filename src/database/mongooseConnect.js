@@ -1,4 +1,4 @@
-const DATABASE_URI = "mongodb+srv://claudianefidelis:36ybplr5Xbf5Btln@cluster0.ijgvj.mongodb.net/Protagoniza-Pretx"
+const DATABASE_URI = process.env.DATABASE_URI
 const mongoose = require("mongoose")
 
 const connect = async () => {
@@ -16,3 +16,5 @@ const connect = async () => {
 module.exports = {
      connect 
     }
+
+    

@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/projetos', projetoRoutes)
 app.use(projetosRoutesModel)
-app.use('/my-documentation-route', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 mongoose.connect()
 
