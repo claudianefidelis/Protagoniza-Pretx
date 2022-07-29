@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cors())
 app.use('/projetos', projetoRoutes)
 app.use(projetosRoutesModel)
-app.use(index)
+app.use('/', index)
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 
