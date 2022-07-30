@@ -1,14 +1,13 @@
 const projetos = require('../models/projetos')
-const express = require('express')
-const app = express()
-
-app.use(express.json())
 
 
 
 
 
-const getAddProject = async (require, response) => {
+
+
+
+const postAddProject = async (require, response) => {
     try {
         const { name, state, topic, description, format } = require.body
 
@@ -27,15 +26,18 @@ const getAddProject = async (require, response) => {
 //-----------------------------------------
 
 
-const getAllProjects = (request, response) => {
-    projetos.find((err, projetos) => {
-        if (err) {
-            response.status(500).send({ message: err.message });
-        } else {
-            response.status(200).json(projetos);
-        }
-    })
-}
+const getAllProjects = async (req, res) => {
+    try {
+      const allProjetos = await projetos.find();
+  
+      if (!allProjetos) {
+        return res.status(404).send("Not Found");
+      }
+      res.status(200).json(allProjetos);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
 //-----------------------------------------
 
 const getIdProject = async (request, response) => {
@@ -200,7 +202,7 @@ const deleteProject = async (request, response) => {
 
 
 module.exports = {
-    getAddProject,
+    postAddProject,
     getAllProjects,
     getIdProject,
     getTopic,

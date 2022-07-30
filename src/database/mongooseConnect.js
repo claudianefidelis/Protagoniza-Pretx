@@ -1,5 +1,6 @@
-const DATABASE_URI = process.env.DATABASE_URI
+require('dotenv-safe').config()
 const mongoose = require("mongoose")
+const DATABASE_URI = process.env.DATABASE_URI
 
 const connect = async () => {
     try {
