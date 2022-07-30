@@ -149,10 +149,10 @@ const getByState = async (request, response) => {
 const patchUpdateFormat = async (req, res) => {
     try {
         const { name, state, topic, description, format } = req.body
-        await projetoModel.findByIdAndUpdate(req.params.id, {
+        await projetos.findByIdAndUpdate(req.params.id, {
             name, state, topic, description, format
         })
-        const patchUpdateFormat = await projetoModel.findById(req.params.id)
+        const patchUpdateFormat = await projetos.findById(req.params.id)
 
         res.status(200).json(patchUpdateFormat)
     } catch (error) {
