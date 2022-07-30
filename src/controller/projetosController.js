@@ -131,19 +131,34 @@ const getByState = async (request, response) => {
 
 
 
-const patchUpdateFormat = (request, response) => {
-    const idRequest = request.params.id
-    let novoFormato = request.body.formato
+// const patchUpdateFormat = (request, response) => {
+//     const idRequest = request.params.id
+//     let novoFormato = request.body.formato
 
-    formatoFiltrado = projetos.find(projeto => projeto.id == idRequest)
+//     formatoFiltrado = projetos.find(projeto => projeto.id == idRequest)
 
-    formatoFiltrado.formato = novoFormato
+//     formatoFiltrado.formato = novoFormato
 
-    response.status(200).json([{
+//     response.status(200).json([{
 
-        "mensagem": "Formato atualizado",
-        formatoFiltrado
-    }])
+//         "mensagem": "Formato atualizado",
+//         formatoFiltrado
+//     }])
+// }
+
+const patchUpdateFormat = async (req, res) => {
+    try {
+        const { name, state, topic, description, format } = req.body
+        await projetoModel.findByIdAndUpdate(req.params.id, {
+            name, state, topic, description, format
+        })
+        const patchUpdateFormat = await projetoModel.findById(req.params.id)
+
+        res.status(200).json(patchUpdateFormat)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ message: error.message })
+    }
 }
 //------------------------------------
 
