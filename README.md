@@ -43,5 +43,19 @@ API desenvolvida para consulta de projetos desenvolvidos por jovens pretos, com 
 
 ``` 
   
+#### :black_medium_square: Principais rotas:  
+```
+| Verbo  |   EndPoint             |         Função                                    | 
+| ------ | ---------------------- | --------------------------------------------------|
+| POST   | /addProjeto            | Cadastrar novo projeto                            | 
+| GET    | /projetoslist          | Listar todos os projetos                          |  
+| GET    | /projeto/tema          | Buscar projeto por tema                           |   
+| GET    | /router.get            | Buscar projeto por estado                         |   
+| GET    | /projeto/:id           | Buscar projeto por id                             |  
+| PATCH  | /updateFormat/:id      | Update de formato buscando por id                 |   
+| PUT    | /updateProject/:id     | Update de PROJETO buscando por id                 |   
+| DELETE | /delete/:id            | Deletar projeto por id                            |  
+```   
+  
   
   
