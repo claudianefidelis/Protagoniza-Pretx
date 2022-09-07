@@ -1,3 +1,3 @@
 # <p align="center"><b> Protagoniza Pretx </b> ✊🏿 <p>
   
-## Projeto final para o bootcamp {c:#B81365}Reprograma{/c}
+## Projeto final para o bootcamp <font color=\"purple\">Reprograma</font>
