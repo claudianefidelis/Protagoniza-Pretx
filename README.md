@@ -6,7 +6,7 @@
 API desenvolvida para consulta de projetos desenvolvidos por jovens pretos, com o objetivo de levar aos mesmos a visão mais ampla do poder de suas ideias e inspirações em momento importante na construção de autoestima e visão de possibilidades.  
 
 #### :black_medium_square: Documentação:
-:black_medium_small_square: [Swagger](https://protagoniza-pretx.herokuapp.com/documentation/#/)
+ :black_medium_small_square: [Swagger](https://protagoniza-pretx.herokuapp.com/documentation/#/)
   
 #### :black_medium_square: Arquitetura:
  ```
