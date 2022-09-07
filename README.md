@@ -2,11 +2,10 @@
   
 ## Projeto final para o bootcamp [{Reprograma}](https://www.reprograma.com.br/)
   
-:black_medium_square: ### Sobre o projeto: 
+### :black_medium_square: Sobre o projeto: 
 API desenvolvida para consulta de projetos desenvolvidos por jovens pretos, com o objetivo de levar aos mesmos a visão mais ampla do poder de suas ideias e inspirações em momento importante na construção de autoestima e visão de possibilidades.  
   
-:black_medium_square: ### Arquitetura
-:black_medium_square:
+### :black_medium_square: Arquitetura
  ```
  📁 PROTAGONIZA-PRETX
    |
