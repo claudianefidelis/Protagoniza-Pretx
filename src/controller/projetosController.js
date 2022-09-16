@@ -1,12 +1,5 @@
 const projetos = require('../models/projetos')
 
-
-
-
-
-
-
-
 const postAddProject = async (require, response) => {
     try {
         const { name, state, topic, description, format } = require.body
@@ -23,22 +16,18 @@ const postAddProject = async (require, response) => {
     }
 }
 
-//-----------------------------------------
-
-
 const getAllProjects = async (req, res) => {
     try {
-      const allProjetos = await projetos.find();
-  
-      if (!allProjetos) {
-        return res.status(404).send("Not Found");
-      }
-      res.status(200).json(allProjetos);
+        const allProjetos = await projetos.find();
+
+        if (!allProjetos) {
+            return res.status(404).send("Not Found");
+        }
+        res.status(200).json(allProjetos);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
-  };
-//-----------------------------------------
+};
 
 const getIdProject = async (request, response) => {
     try {
@@ -50,8 +39,6 @@ const getIdProject = async (request, response) => {
     }
 }
 
-//-----------------------------------------
-
 const getTopic = async (request, response) => {
     try {
         const { topic } = request.query;
@@ -62,8 +49,6 @@ const getTopic = async (request, response) => {
     }
 }
 
-//------------------------------------------
-
 const getByState = async (request, response) => {
     try {
         const { state } = request.query;
@@ -73,9 +58,6 @@ const getByState = async (request, response) => {
         response.status(500).send({ message: err.message });
     }
 }
-
-
-
 
 //-------------------------------------------
 
@@ -160,7 +142,6 @@ const patchUpdateFormat = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
-//------------------------------------
 
 const putUpdateProjectId = (request, response) => {
 
@@ -194,7 +175,6 @@ const putUpdateProjectId = (request, response) => {
 // }
 //------------------------------------------
 
-
 const deleteProject = async (request, response) => {
     try {
         const { id } = request.params
@@ -207,15 +187,6 @@ const deleteProject = async (request, response) => {
     }
 }
 
-
-
-
-
-
-
-
-
-
 module.exports = {
     postAddProject,
     getAllProjects,
@@ -225,5 +196,4 @@ module.exports = {
     patchUpdateFormat,
     putUpdateProjectId,
     deleteProject,
-
 }
