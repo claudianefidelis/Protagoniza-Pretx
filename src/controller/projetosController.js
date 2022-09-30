@@ -1,15 +1,17 @@
+const e = require('express')
 const projetos = require('../models/projetos')
+const projectService = require('../services/createProjectService')
+const getAllProjectsService = require('../services/getAllProjectsService')
+
+// TODO: Global error handler / Use correct http codes
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+// https://sematext.com/blog/node-js-error-handling/
+// create services
 
 const postAddProject = async (require, response) => {
     try {
-        const { name, state, topic, description, format } = require.body
-
-        const newproject = new projetos({
-            name, state, topic, description, format
-        })
-        const savedproject = await newproject.save()
-        response.status(201).json(savedproject)
-
+        const project = await projectService.handle(require.body)
+        response.status(201).json(project)
     } catch (error) {
         console.error(error)
         response.status(500).json({ message: error.message })
@@ -25,6 +27,7 @@ const getAllProjects = async (req, res) => {
         }
         res.status(200).json(allProjetos);
     } catch (error) {
+        console.error(error)
         res.status(500).json({ message: error.message });
     }
 };
@@ -44,7 +47,8 @@ const getTopic = async (request, response) => {
         const { topic } = request.query;
         const findTopic = await projetos.find({ topic: topic });
         response.status(200).json(findTopic);
-    } catch (err) {
+    } catch (error) {
+        console.error(error)
         response.status(500).send({ message: err.message });
     }
 }
@@ -54,7 +58,8 @@ const getByState = async (request, response) => {
         const { state } = request.query;
         const findEstado = await projetos.find({ state: state });
         response.status(200).json(findEstado);
-    } catch (err) {
+    } catch (error) {
+        console.error(error)
         response.status(500).send({ message: err.message });
     }
 }
@@ -144,19 +149,23 @@ const patchUpdateFormat = async (req, res) => {
 }
 
 const putUpdateProjectId = (request, response) => {
+    try {
+        const idRequest = request.params.id
+        let projetoRequest = request.body
 
-    const idRequest = request.params.id
-    let projetoRequest = request.body
+        let indexEncontrado = projetos.findIndex(projeto => projeto.id == idRequest)
 
-    let indexEncontrado = projetos.findIndex(projeto => projeto.id == idRequest)
+        projetos.splice(indexEncontrado, 1, projetoRequest)
 
-    projetos.splice(indexEncontrado, 1, projetoRequest)
+        response.status(200).json([{
+            "message": "Projeto atualizado",
+            projetos
 
-    response.status(200).json([{
-        "message": "Projeto atualizado",
-        projetos
-
-    }])
+        }])
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ message: error.message })
+    }
 }
 
 //---------------------------------------
